@@ -1,0 +1,61 @@
+<div class="card" *ngIf="currentPicture; else pictureUndefined">
+    <div class="card-header">
+        {{ pageTitle }}
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4">
+                <img class="card-img" [src]='currentPicture.url'>
+            </div>
+            <div class="col-12 col-sm-6 col-md-8">
+                <div class="row detail-padding">
+                    <div class="col-3 col-sm-5 col-md-3">
+                        <h6 class="card-title">Title:</h6>
+                    </div>
+                    <div class="col-9 col-sm-7 col-md-9">
+                        <p class="card-text">{{ currentPicture.title }}
+                    </div>
+                </div>
+                <div class="row detail-padding">
+                    <div class="col-3 col-sm-5 col-md-3">
+                        <h6 class="card-title">Album:</h6>
+                    </div>
+                    <div class="col-9 col-sm-7 col-md-9">
+                        <p class="card-text">{{ currentPicture.albumId }}
+                    </div>
+                </div>
+                <div class="row detail-padding">
+                    <div class="col-3 col-sm-5 col-md-3">
+                        <h6 class="card-title">URL:</h6>
+                    </div>
+                    <div class="col-9 col-sm-7 col-md-9">
+                        <p class="card-text">{{ currentPicture.url }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer clearfix">
+            <button class="btn btn-outline-secondary" 
+                (click)="navigateToPrevious()"
+                style="float: left">Previous</button>
+            <button class="btn btn-outline-secondary" 
+                (click)="navigateToNext()"
+                style="float: right">Next</button>
+    </div>
+</div>
+<ng-template #pictureUndefined>
+    <div class="card">
+        <div class="card-header">
+            <h2>Oops!</h2>
+        </div>
+        <div class="card-body">
+            <h6 class="card-title">Something went wrong with displaying this picture...</h6>
+            <p>error message: {{ errorMessage }}</p>
+        </div>
+        <div class="card-footer">
+            <button class='btn btn-outline-secondary'
+                [routerLink]="[ '/pictures' ]">Back</button>
+        </div>
+    </div>
+</ng-template>
