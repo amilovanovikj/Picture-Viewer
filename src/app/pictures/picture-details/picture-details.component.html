@@ -1,6 +1,10 @@
-<div class="card" *ngIf="currentPicture; else pictureUndefined">
+<div class="card clearfix" *ngIf="currentPicture; else pictureUndefined">
     <div class="card-header">
-        {{ pageTitle }}
+        <h5 style="float: left">{{ pageTitle }}</h5>
+        <button 
+        style="float: right"
+        class="btn btn-outline-secondary"
+        (click)="navigateBack()">&lt; Back</button>
     </div>
     <div class="card-body">
         <div class="row">
@@ -29,7 +33,7 @@
                         <h6 class="card-title">URL:</h6>
                     </div>
                     <div class="col-9 col-sm-7 col-md-9">
-                        <p class="card-text">{{ currentPicture.url }}
+                        <p class="card-text"><a href='{{ currentPicture.url }}'>{{ currentPicture.url }}</a>
                     </div>
                 </div>
             </div>

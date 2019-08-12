@@ -3,6 +3,7 @@ import { PictureDetailsComponent } from './picture-details/picture-details.compo
 import { PictureListComponent } from './picture-list/picture-list.component';
 import { PictureRoutingModule } from './picture-routing.module';
 import { CommonModule } from '@angular/common';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
     declarations: [
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
     imports: [
         CommonModule,
         PictureRoutingModule,
+        InfiniteScrollModule
     ],
     exports:[
         

@@ -1,7 +1,6 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IPicture } from '../shared/picture.model';
 import { PictureService } from '../shared/picture.service';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +12,10 @@ export class PictureListComponent implements OnInit {
 	windowWidth: number;
 	isScreenWidthGreaterThan400: boolean;
 	pageTitle: string = "Picture List";
-	pictures$: Observable<IPicture[]>;
+	pageNumber: number = 0;
+	indexOfLastPicture: number;
+	picturesLazyLoad: IPicture[];
+	pictureList: IPicture[];
 	errorMessage: string;
 	selectedPicture: IPicture;
 
@@ -26,7 +28,16 @@ export class PictureListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.pictures$ = this.pictureService.getPictures()
+			this.pictureService
+			.getPictures()
+			.subscribe(
+				pictures => {
+					this.pictureList = pictures;
+					this.picturesLazyLoad = pictures.slice(0, 48);
+					this.indexOfLastPicture = 48;
+				},
+				error => this.errorMessage = <any>error
+			);
 	}
 
 	onResize(event: any){
@@ -34,7 +45,16 @@ export class PictureListComponent implements OnInit {
 		this.isScreenWidthGreaterThan400 = this.windowWidth > 400;
 	}
 
+	onScroll(): void {
+		let tmp = this.indexOfLastPicture + 48;
+		while(this.indexOfLastPicture < this.pictureList.length && this.indexOfLastPicture < tmp){
+			this.picturesLazyLoad.push(this.pictureList[this.indexOfLastPicture]);
+			this.indexOfLastPicture++;
+		}
+	}
+
 	navigateToPicture(picture: IPicture): void {
 		this.router.navigate([`pictures/${picture.id}`])
 	}
+
 }
