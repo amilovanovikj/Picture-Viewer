@@ -9,7 +9,6 @@ import { PictureService } from '../shared/picture.service';
   styleUrls: ['./picture-details.component.css']
 })
 export class PictureDetailsComponent implements OnInit {
-
   pageTitle: string = 'Picture Details';
   highestId: number;
   lowestId: number;
