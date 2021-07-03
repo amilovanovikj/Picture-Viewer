@@ -1,12 +1,21 @@
 <nav class='navbar navbar-expand navbar-light bg-light sticky-top'>
-    <ul class='nav nav-pills mr-auto'>
-		<li><a class="navbar-brand">
-			{{pageTitle}}</a></li>
-      	<li><a class='btn btn-outline-primary'
-			style="margin-right: 10px; margin-bottom: 5px"
-			(click)="navigateHome()">Home</a></li>
-		<li><a class='btn btn-outline-secondary'
-			(click)="navigatePictureList()">Picture List</a></li>
+  <a class="navbar-brand">
+    {{pageTitle}}</a>
+  <ul class='nav nav-pills mr-auto'>
+      	<li
+        [ngClass]="{'ml-auto': !isScreenWidthGreaterThan400}">
+          <a class='btn btn-outline-primary btn-custom-width'
+            style="margin-bottom: 5px;"
+            (click)="navigateHome()">Home
+          </a>
+        </li>
+        <li
+        [ngClass]="{'ml-auto': !isScreenWidthGreaterThan400}">
+          <a class='btn btn-outline-secondary btn-custom-width'
+            style="margin-left: 10px;"
+            (click)="navigatePictureList()">Picture List
+          </a>
+        </li>
 	</ul>
 </nav>
 <br>
