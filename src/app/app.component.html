@@ -1,18 +1,14 @@
 <nav class='navbar navbar-expand navbar-light bg-light sticky-top'>
   <a class="navbar-brand">
     {{pageTitle}}</a>
-  <ul class='nav nav-pills mr-auto'>
-      	<li
-        [ngClass]="{'ml-auto': isSmallScreen}">
-          <a class='btn btn-outline-primary btn-custom-width'
-            style="margin-bottom: 5px;"
+  <ul class='nav nav-pills'>
+      	<li class="ml-auto">
+          <a class='btn btn-outline-primary btn-custom-size'
             (click)="navigateHome()">Home
           </a>
         </li>
-        <li
-        [ngClass]="{'ml-auto': isSmallScreen}">
-          <a class='btn btn-outline-secondary btn-custom-width'
-            style="margin-left: 10px;"
+      	<li class="ml-auto">
+          <a class='btn btn-outline-secondary btn-custom-size'
             (click)="navigatePictureList()">Picture List
           </a>
         </li>
