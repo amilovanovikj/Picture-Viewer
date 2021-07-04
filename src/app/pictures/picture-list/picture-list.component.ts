@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class PictureListComponent implements OnInit {
 	windowWidth: number;
-	isScreenWidthGreaterThan400: boolean;
+	isSmallScreen: boolean;
 	pageTitle: string = "Picture List";
 	pageNumber: number = 0;
 	indexOfLastPicture: number;
@@ -24,7 +24,7 @@ export class PictureListComponent implements OnInit {
 		private router: Router)
 	{
 		this.windowWidth = window.innerWidth;
-		this.isScreenWidthGreaterThan400 = this.windowWidth > 400;
+		this.isSmallScreen = this.windowWidth < 450;
 	}
 
 	ngOnInit() {
@@ -42,7 +42,7 @@ export class PictureListComponent implements OnInit {
 
 	onResize(event: any){
 		this.windowWidth = event.target.innerWidth;
-		this.isScreenWidthGreaterThan400 = this.windowWidth > 400;
+		this.isSmallScreen = this.windowWidth < 450;
 	}
 
 	onScroll(): void {

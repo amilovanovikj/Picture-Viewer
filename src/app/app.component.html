@@ -3,14 +3,14 @@
     {{pageTitle}}</a>
   <ul class='nav nav-pills mr-auto'>
       	<li
-        [ngClass]="{'ml-auto': !isScreenWidthGreaterThan400}">
+        [ngClass]="{'ml-auto': isSmallScreen}">
           <a class='btn btn-outline-primary btn-custom-width'
             style="margin-bottom: 5px;"
             (click)="navigateHome()">Home
           </a>
         </li>
         <li
-        [ngClass]="{'ml-auto': !isScreenWidthGreaterThan400}">
+        [ngClass]="{'ml-auto': isSmallScreen}">
           <a class='btn btn-outline-secondary btn-custom-width'
             style="margin-left: 10px;"
             (click)="navigatePictureList()">Picture List
